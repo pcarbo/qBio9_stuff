@@ -45,3 +45,5 @@ rows <- which(tornadoes$BEGIN_LON < -140 |
 tornadoes[rows,]
 tornadoes <- tornadoes[-rows,]
 map_usa_latlongs(tornadoes$BEGIN_LAT,tornadoes$BEGIN_LON)
+rows <- which(tornadoes$dayofyear == "April-3")
+map_usa_latlongs(tornadoes[rows,"BEGIN_LAT"],tornadoes[rows,"BEGIN_LON"])
