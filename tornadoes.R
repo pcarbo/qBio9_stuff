@@ -60,5 +60,6 @@ tornadoes[rows,]
 tornadoes <- tornadoes[-rows,]
 map_usa_latlongs(tornadoes$BEGIN_LAT,tornadoes$BEGIN_LON)
 
+# Create a map of the Super Outbreak.
 rows <- which(tornadoes$dayofyear == "April-3")
 map_usa_latlongs(tornadoes[rows,"BEGIN_LAT"],tornadoes[rows,"BEGIN_LON"])
