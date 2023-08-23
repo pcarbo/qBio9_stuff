@@ -1,14 +1,29 @@
 ---
-title: An R Markdown document converted from "basic_computing_qbio9.ipynb"
-output: html_document
+title: "Basic Computing --- Introduction to R"
+output:
+  pdf_document:
+    keep_tex: true
+    latex_engine: pdflatex
+    template: readable.tex
+author:
+  name: Peter Carbonetto
+  affiliation: University of Chicago
+date: August 22, 2023
+geometry: margin=1in
+fontfamily: mathpazo
+fontsize: 11pt
+spacing: single
+graphics: yes
+endnote: no
+thanks: "This document is included as part of the Basic Computing---Introduction to R tutorial packet for the BSD qBio Bootcamp, University of Chicago, 2023. **Current version**: `r format(Sys.time(), '%B %d, %Y')`; **Corresponding author**: pcarbo@uchicago.edu. Thanks to Stefano Allesina, John Novembre, Stephanie Palmer and Matthew Stephens for their guidance."
 ---
 
-<a href="https://colab.research.google.com/github/pcarbo/qBio9_stuff/blob/main/basic_computing_qbio9.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+```{r knitr-opts, include=FALSE}
+knitr::opts_chunk$set(comment = "#",collapse = TRUE,results = "hide",
+                      fig.align = "center",eval = FALSE)
+```
 
-Peter Carbonetto<br>
-University of Chicago<br>
-Chicago, IL<br>
-*Last modified on August 22, 2023*
+[$\triangleright$ Open in Colab](https://colab.research.google.com/github/pcarbo/qBio9_stuff/blob/main/basic_computing_qbio9.ipynb)
 
 How this tutorial is organized
 ==============================
@@ -21,8 +36,6 @@ This tutorial is divided into two parts:
 
 Some initial notes about computing
 ==================================
-
-<img alt="appleiic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Apple_IIc_with_monitor.jpg/1024px-Apple_IIc_with_monitor.jpg" width=200>
 
 The first computer I learned to program on was an [Apple IIc](https://en.wikipedia.org/wiki/Apple_IIc). Things have changed a lot since then:
 
@@ -310,8 +323,6 @@ This illustrates that R code, even only a few lines of code, can quickly get qui
 
 Tending to your "gaRden"
 ========================
-
-<img src="https://images.ctfassets.net/zma7thmmcinb/zxJNWVb6GTnbrzqt2PaMm/79ea79c254cbbb9b108876e590edf5ae/raised-wood-garden-bed-Niki-Jabbour.jpg" alt="Your gaRden" width="275">
 
 A Jupyter notebook proceeds in a linear fashion, building your analysis over time: it starts with loading the packages, importing the data, perhaps some steps to prepare your data for the more complex analyses, executing the analysis, followed by visualization and interpretation.
 
