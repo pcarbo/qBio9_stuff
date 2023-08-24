@@ -42,6 +42,8 @@ This tutorial is divided into two parts:
 Some initial notes about computing
 ==================================
 
+<img alt="appleiic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Apple_IIc_with_monitor.jpg/1024px-Apple_IIc_with_monitor.jpg" width=200>
+
 The first computer I learned to program on was an [Apple IIc](https://en.wikipedia.org/wiki/Apple_IIc). Things have changed a lot since then:
 
 + Computing has become *highly distributed and interconnected.* (Most likely, a lot of the data for your research will be stored in computers that are very far away from you, and yet you can access these data in seconds. And you can even *analyze your data* on computers far away that you cannot see or touch.)
@@ -128,7 +130,7 @@ The code is split into two chunks.
 The first code chunk retrieves  what we need (the data and the R packages) to run the analysis:
 
 ```{r}
-system("wget https://raw.githubusercontent.com/pcarbo/qBio9_stuff/main/dogs.csv")
+system("wget https://raw.githubusercontent.com/pcarbo/qBio9_stuff/main/dogs_smaller.csv")
 list.files()
 install.packages("ggplot2")
 install.packages("ggrepel")
@@ -143,7 +145,7 @@ library("ggplot2")
 library("ggrepel")
 library("cowplot")
 library("repr")
-dogs <- read.csv("dogs.csv",stringsAsFactors = FALSE)
+dogs <- read.csv("dogs_smaller.csv",stringsAsFactors = FALSE)
 fit <- lm(aod ~ weight,dogs)
 summary(fit)
 a <- coef(fit)["weight"]
@@ -181,7 +183,7 @@ A key ingredient of course is the data set. I put the data set in the same GitHu
 
 ```{r}
 getwd()
-system("wget https://raw.githubusercontent.com/pcarbo/qBio9_stuff/main/dogs.csv")
+system("wget https://raw.githubusercontent.com/pcarbo/qBio9_stuff/main/dogs_smaller.csv")
 list.files()
 ```
 
@@ -220,26 +222,26 @@ You may have figured this out already, nonetheless it is important to note that 
 Import the data into R as a data frame
 --------------------------------------
 
-The dogs data are stored in a [CSV file](https://github.com/pcarbo/qBio9_stuff/blob/main/dogs.csv). We use the `read.csv` function to *import the data into a data structure that is convenient for analysis in R.* (Note this command will only work if your R working directory is the same as the directory containing `dogs.csv`.) Although this is a single line of code, there is a lot going on under the surface.
+The dogs data are stored in a [CSV file](https://github.com/pcarbo/qBio9_stuff/blob/main/dogs_smaller.csv). We use the `read.csv` function to *import the data into a data structure that is convenient for analysis in R.* (Note this command will only work if your R working directory is the same as the directory containing `dogs_smaller.csv`.) Although this is a single line of code, there is a lot going on under the surface.
 
 ```{r}
-dogs <- read.csv("dogs.csv",stringsAsFactors = FALSE)
+dogs <- read.csv("dogs_smaller.csv",stringsAsFactors = FALSE)
 ```
 
 Let's deconstruct what we did:
 
-1. We called function `read.csv`. This is a flexible function that can do many, many things, and has many options. To learn more, run `help(read.csv)`. For now, it suffices to know that we set the "file" argument to `"dogs.csv"`, and we set the `stringsAsFactors` argument to FALSE. (In time we will understand why, but to understand why we will first need to understand what *factors* are.)
+1. We called function `read.csv`. This is a flexible function that can do many, many things, and has many options. To learn more, run `help(read.csv)`. For now, it suffices to know that we set the "file" argument to `"dogs_smaller.csv"`, and we set the `stringsAsFactors` argument to FALSE. (In time we will understand why, but to understand why we will first need to understand what *factors* are.)
 
 2. The output of `read.csv` is assigned to an object in our R environment which we have called "dogs". If the object does not exist already, it is created. If it does exist, it is overwritten. A common mistake is to forget to assign the output. *What happens if we forget to do that?*
 
 ```{r}
-read.csv("dogs.csv",stringsAsFactors = FALSE)
+read.csv("dogs_smaller.csv",stringsAsFactors = FALSE)
 ```
 
-What if we had not used the double quotes for `"dogs.csv"`?
+What if we had not used the double quotes for `"dogs_smaller.csv"`?
 
 ```{r}
-dogs <- read.csv(dogs.csv,stringsAsFactors = FALSE)
+dogs <- read.csv(dogs_smaller.csv,stringsAsFactors = FALSE)
 ```
 
 What is this object? To find out, we can print out its contents:
@@ -329,6 +331,8 @@ This illustrates that R code, even only a few lines of code, can quickly get qui
 Tending to your "gaRden"
 ========================
 
+<img src="https://images.ctfassets.net/zma7thmmcinb/zxJNWVb6GTnbrzqt2PaMm/79ea79c254cbbb9b108876e590edf5ae/raised-wood-garden-bed-Niki-Jabbour.jpg" alt="Your gaRden" width="275">
+
 A Jupyter notebook proceeds in a linear fashion, building your analysis over time: it starts with loading the packages, importing the data, perhaps some steps to prepare your data for the more complex analyses, executing the analysis, followed by visualization and interpretation.
 
 The problem is that it hides a lot of *what is actually going on.* What is actually going on is that every line of code is acting on your R environment: it is taking objects that are already in your environment, and using them to generate new objects, or modify existing objects. I think of this as "tending to your gaRden" (your R environment is the garden, and the objects are the fruits, vegetables and flowers in your garden).
@@ -382,7 +386,7 @@ console).
 Another Mini-Practice: Create an R script in RStudio
 ====================================================
 
-Now let's try to reproduce our analysis of the "dogs" data in RStudio on our computer. In this exercise, we will create an *R script* in RStudio to analyze the data from `dogs.csv`. An R script is different from a Jupyter notebook because it only *stores the code* (except for "comments"—accompanying text can be stored in comments).
+Now let's try to reproduce our analysis of the "dogs" data in RStudio on our computer. In this exercise, we will create an *R script* in RStudio to analyze the data from `dogs_smaller.csv`. An R script is different from a Jupyter notebook because it only *stores the code* (except for "comments"—accompanying text can be stored in comments).
 
 **Note:** You do not need to include steps to the install the packages and download the CSV file; you can perform those steps separately.
 
@@ -390,7 +394,7 @@ You may find that there are some differences between running the code on a Googl
 
 Once you have created a working script, and have saved it somewhere on your computer, we will discuss different strategies for saving the results of our analysis in R.
 
-**Question:** Now consider modifying your script to analyze the "more dogs" data set. What changes do you need to make to your script to analyze this slightly larger data set, [dogs_more.csv](https://github.com/pcarbo/qBio9_stuff/blob/main/dogs_more.csv)?
+**Question:** Now consider modifying your script to analyze the "more dogs" data set. What changes do you need to make to your script to analyze this slightly larger data set, [dogs_bigger.csv](https://github.com/pcarbo/qBio9_stuff/blob/main/dogs_bigger.csv)?
 
 **Optional exercise:** Implement your analysis of the dogs data as an [R Markdown document](https://kbroman.org/knitr_knutshell/).
 
@@ -419,8 +423,8 @@ rm(list = ls())
 Now download and import the larger dogs data set:
 
 ```{r}
-system("wget https://raw.githubusercontent.com/pcarbo/qBio9_stuff/main/dogs_more.csv")
-dogs <- read.csv("dogs_more.csv",stringsAsFactors = FALSE)
+system("wget https://raw.githubusercontent.com/pcarbo/qBio9_stuff/main/dogs_bigger.csv")
+dogs <- read.csv("dogs_bigger.csv",stringsAsFactors = FALSE)
 ```
 
 To remind ourselves, let's print out the first few rows of the table:
