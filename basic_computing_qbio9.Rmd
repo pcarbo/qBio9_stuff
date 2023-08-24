@@ -16,14 +16,19 @@ spacing: single
 graphics: yes
 endnote: no
 thanks: "This document is included as part of the Basic Computing---Introduction to R tutorial packet for the BSD qBio Bootcamp, University of Chicago, 2023. **Current version**: `r format(Sys.time(), '%B %d, %Y')`; **Corresponding author**: pcarbo@uchicago.edu. Thanks to Stefano Allesina, John Novembre, Stephanie Palmer and Matthew Stephens for their guidance."
+abstract: "The aim of this workshop is to introduce R, and to use R to
+  analyze data interactively. We will focus on one particularly widely
+  used data structure, the *data frame.* We will learn how to import
+  tabular data into a data frame,and we will learn how to inspect,
+  manipulate and analyze the data frame. This workshop is intended
+  for biologists with little to no background in programming. 
+  [**This tutorial is also a Jupyter notebook in Google Colab.**](https://colab.research.google.com/github/pcarbo/qBio9_stuff/blob/main/basic_computing_qbio9.ipynb)"
 ---
 
 ```{r knitr-opts, include=FALSE}
 knitr::opts_chunk$set(comment = "#",collapse = TRUE,results = "hide",
                       fig.align = "center",eval = FALSE)
 ```
-
-[$\triangleright$ Open in Colab](https://colab.research.google.com/github/pcarbo/qBio9_stuff/blob/main/basic_computing_qbio9.ipynb)
 
 How this tutorial is organized
 ==============================
