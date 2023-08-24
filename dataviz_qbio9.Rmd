@@ -26,7 +26,7 @@ powerful plotting interface that extends the base plotting functions in R.
 knitr::opts_chunk$set(comment = "#",collapse = TRUE,results = "hide",
                       fig.align = "center",eval = FALSE)
 ```
-					  
+
 Some motivation
 ===============
 
@@ -149,7 +149,7 @@ highlights better the key elements of a ggplot2 plot:
 
 3. A "geom", short for "geometric object", specifies the type of
    plot. ggplot2 has an excellent on-line reference at
-   [ggplot2.tidyverse.org][ggplot2-reference] explaining all the
+   [ggplot2.tidyverse.org](https://ggplot2.tidyverse.org/reference) explaining all the
    "geoms", from bar charts to contour plots, with code examples for
    each.
 
