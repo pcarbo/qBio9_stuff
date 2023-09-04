@@ -42,7 +42,7 @@ This tutorial is divided into two parts:
 Some initial notes about computing
 ==================================
 
-<img alt="appleiic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Apple_IIc_with_monitor.jpg/1024px-Apple_IIc_with_monitor.jpg" width=200>
+<img alt="appleiic" src="https://i.pinimg.com/originals/7b/f2/61/7bf261a60d5e779459cdc60ef1109066.jpg" width=700>
 
 The first computer I learned to program on was an [Apple IIc](https://en.wikipedia.org/wiki/Apple_IIc). Things have changed a lot since then:
 
@@ -91,12 +91,12 @@ Jupyter notebook IDE is different from the RStudio IDE; Each IDE has its benefit
 How should I use this document?
 ===============================
 
-Perhaps the simplest thing you can do is copy and paste chunks code, one cell at a time, into R, or into the Console in RStudio, and examine the outputs.
+Perhaps the simplest thing you can do is copy and paste code chunks, one cell at a time, into R, or into the Console in RStudio, and examine the outputs.
 (Please try this!)
 
-And of course you can open up this document in Jupyter notebook IDE and run the code it there. This would be more elegant than the copy-and-paste approach, but not necessarily "better".
+And of course you can open up this document in Jupyter notebook IDE and code in there. This would be more elegant than the copy-and-paste approach, but not necessarily "better".
 
-Quite remarkably, to start up a *virtual machine that runs on a server operated by Google.* Even more remarkably, this is done simply by open this link in your favourite browser:
+Quite remarkably, to start up a *virtual machine that runs on a server operated by Google.* Even more remarkably, this is done simply by opening this link in your favourite browser:
 
 https://colab.research.google.com/github/pcarbo/qBio9_stuff/blob/main/basic_computing_qbio9.ipynb
 
@@ -394,7 +394,7 @@ You may find that there are some differences between running the code on a Googl
 
 Once you have created a working script, and have saved it somewhere on your computer, we will discuss different strategies for saving the results of our analysis in R.
 
-**Question:** Now consider modifying your script to analyze the "more dogs" data set. What changes do you need to make to your script to analyze this slightly larger data set, [dogs_bigger.csv](https://github.com/pcarbo/qBio9_stuff/blob/main/dogs_bigger.csv)?
+**Question:** Now consider modifying your script to analyze the "more dogs" data set. What changes do you need to make to your script to analyze this slightly larger data set, [dogs_bigger.csv](https://github.com/pcarbo/qBio9_stuff/blob/main/dogs_bigger.csv)? (Specifically, try to perform the linear regression, then recreate the weight vs. longevity scatterplot with the "best fit" line.)
 
 **Optional exercise:** Implement your analysis of the dogs data as an [R Markdown document](https://kbroman.org/knitr_knutshell/).
 
@@ -509,14 +509,14 @@ Before diving deeply into the Programming Challenges, first discuss a collaborat
 Warmup: Smallest and largest dog breeds
 ---------------------------------------
 
-This should calculate the average height (in inches) of the largest dog breed:
+This should find the average height (in inches) of the largest dog breed:
 
 ```{r}
 x <- dogs$height
 max(x)
 ```
 
-Now write code to calculate the (average) height of the smallest dog breed:
+Now write code to find the (average) height of the smallest dog breed:
 
 ```{r}
 # Add your code here.
@@ -540,6 +540,23 @@ What is the smallest breed?
 
 What objects did you create to answer this question? *Describe the contents of these objects, and what data types they are.*
 
+Another warmup: inspecting data about specific dog breeds
+---------------------------------------------------------
+
+Suppose you wanted to look more closely at the height, weight and other statistics of the Alaskan Malamute, which is stored in the fifth row of the data frame. This is easily done by selecting the fifth row with the square brackets:
+
+```{r}
+dogs[5,]
+```
+
+You can also select several rows at once:
+
+```{r}
+dogs[c(43,46),]
+```
+
+Practice a few times selecting different combinations of rows. What happens if you select a row number that is larger than the height of the table?
+
 Facts about dogs' BMI
 ---------------------
 
@@ -559,29 +576,7 @@ Next, write some code to find the largest, smallest, mean and median BMI. What a
 # Add your code here.
 ```
 
-When performing a statistical analysis, it is common to *transform* the (numeric) data. For example, this would be a square-root transformation of the BMI values:
-
-```{r}
-x <- sqrt(bmi)
-```
-
-There are many reasons to do a transformation. One reason is to produce data that better fits the normal distribution. For example, we can check that the BMI data are normally distributed by comparing the quantiles:
-
-```{r}
-a <- quantile(rnorm(1e4))
-b <- quantile(bmi)
-cor(a,b)
-```
-
-Now write similar code to check whether a *square-root* and *logarithmic* (`log`) transformation of the BMI data are a better fit to the normal distribution.
-
-```{r}
-# Add your code here.
-```
-
-Based on your results, which transformation provides the best fit to the normal: square-root, logarithm, or "identity" (no transformation)?
-
-**Note:** If you would like to use the BMI data later on, you can easily add them to the data frame:
+If you would like to use the BMI data later on, you can easily add them to the data frame:
 
 ```{r}
 dogs$bmi <- bmi
@@ -592,15 +587,22 @@ dogs$bmi <- bmi
 The longest-living dog breeds
 -----------------------------
 
-In the dogs data frame we encountered two types of data: numeric data and text data. Another type of data that is very important is *logical data.* Although the data frame does not contain logical data, we can easily create logical data using logical operators. For example:
+In the dogs data frame we encountered two types of data: numeric data and text data. Another type of data that is very important is *logical data.* Although the data frame does not contain logical data, we can easily create logical data using *logical operators*.
+
+You might create logical data in the process of answering questions about the data. For example, suppose you would like to know how many dogs have an expected longevity of 16 years or greater. Here is some code to answer this question:
 
 ```{r}
 x <- dogs$aod >= 16
-class(x)
 summary(x)
 ```
 
-*What did this code do? What does x contain?*
+*What is x here?*
+
+```{r}
+class(x)
+x
+```
+
 
 To get the indices that are "TRUE", use `which`:
 
@@ -608,11 +610,10 @@ To get the indices that are "TRUE", use `which`:
 i <- which(x)
 length(i)
 i
-y <- dogs$breed
-y[i]
+dogs[i,]
 ```
 
-What to objects i and y contain?
+What does object i contain?
 
 Other logical operators include equals (`==`), and (`&`), or (`|`) and not (`!`). Running `help(Logic)` will give you a longer list.
 
@@ -747,7 +748,7 @@ summary(fit)
 An index of dog breeds
 ----------------------
 
-In this last question, we will organize the dog breeds by the first letter of the breed name. It will help to create a factor.
+There are many situations in biology research in which your data are text data (consider that DNA sequences are a type of text data). The stringi and stringr packages are popular packages for performing more complex analyses of text data. (In computer science, a "string" means a sequence of characters, so one can think of text data as a collection of strings.) In this last question, we will practice some simple manipulation of text data ("strings") to organize the dog breeds by the first letter of the breed name.
 
 The first step is to extract the data we want. This can be done using `substr`:
 
@@ -757,7 +758,7 @@ d <- substr(x,start = 1,stop = 1)
 d
 ```
 
-Which is the most common first letter for a dog breed? And how many breeds start with this letter?
+Which is the most common first letter for a dog breed? And how many breeds start with this letter? To answer these questions, try creating a factor.
 
 ```{r}
 # Add your code here.
@@ -817,7 +818,7 @@ to do to import the data into R.
 Examine the data
 ----------------
 
-Now that we have the data in a data frame, write some code to get an overview of the data.
+Now that we have the data in a data frame, write some code to get an overview of the data frame: e.g., number of rows and columns, the names of the columns, and what types of data are contained in the columns.
 
 ```{r}
 # Add your code here.
@@ -825,7 +826,7 @@ Now that we have the data in a data frame, write some code to get an overview of
 
 In our search for the Tornado Super Outbreak, we will use these seven
 columns: EVENT_TYPE, BEGIN_DAY, MONTH_NAME, STATE, BEGIN_LON,
-BEGIN_LAT and TOR_F_SCALE. Write some code to examine more closely these columns. **Hint:** You might that the `table` function is useful for this.
+BEGIN_LAT and TOR_F_SCALE. Write some code to examine more closely these columns. **Hint:** You might find that the `table` function is useful for this.
 
 ```{r}
 # Add your code here.
