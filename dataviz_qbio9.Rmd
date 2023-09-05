@@ -8,7 +8,7 @@ output:
 author:
   name: Peter Carbonetto
   affiliation: University of Chicago
-date: August 24, 2023
+date: September 5, 2023
 geometry: margin=1in
 fontfamily: mathpazo
 fontsize: 11pt
@@ -130,7 +130,7 @@ size and longevity in dogs. We'll use weight as a proxy for size.
 # Add your code here.
 ```
 
-Now for some more elegant code can accomplish the same thing. (This more
+Now for some more elegant code that can accomplish the same thing. (This more
 elegant code comes with a "for experts only" warning.)
 
 ```{r}
@@ -144,8 +144,7 @@ highlights better the key elements of a ggplot2 plot:
 
 2. The second input is an "aesthetic mapping", created using
    `aes` that defines how columns are mapped to features of the
-   plot (axes, shapes, colors, *etc.*). *Note:* Many people use `aes`
-   instead of `aes`.
+   plot (axes, shapes, colors, *etc.*).
 
 3. A "geom", short for "geometric object", specifies the type of
    plot. ggplot2 has an excellent on-line reference at
