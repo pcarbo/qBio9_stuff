@@ -8,7 +8,7 @@ output:
 author:
   name: Peter Carbonetto
   affiliation: University of Chicago
-date: August 22, 2023
+date: September 5, 2023
 geometry: margin=1in
 fontfamily: mathpazo
 fontsize: 11pt
@@ -410,7 +410,7 @@ I've divided this Mini-Lab into three parts:
 
 1. **Inspecting the data frame.** First we will learn how to use some basic commands to view different parts of the data frame.
 
-2. **Deconstructing the data frame.** We will take a closer look at the laptops data frame.
+2. **Deconstructing the data frame.** We will take a closer look at the dogs data frame.
 
 3. **Programming Challenge:** We will put our new skills to work to solve some programming exercises involving the dogs data.
 
@@ -657,7 +657,7 @@ What is a "factor"?
 
 So far, we have seen three basic data types: character, numeric and logical. There is a fourth important atomic data type in R: *factor.* What is unusual about factors is that (last I checked) there is no equivalent in other popular programming languages, at least not as a primitive data type. And yet you will find that they are extremely useful.
 
-None of the columns in the laptops data frame are a factor. But, like
+None of the columns in the dogs data frame are a factor. But, like
 logical data, *we can create a factor from other data.*
 
 The "shortcoat" column contains numeric data. As it turns out, *it may be more useful to analyze the data as a factor.*
@@ -854,7 +854,7 @@ Since the focus is a particular type of storm event—tornadoes—extract the ro
 When and where did the tornadoes occur?
 ---------------------------------------
 
-What month and what day of the year saw the most tornadoes? Let's call this day the "day of the Super Outbreak." **Hint:** Since there is no data column for "day of year", to answer this question you could create a new column (say, called "dayofyear") from other columns using the `paste` function.
+What calendar date (month + day) saw the most tornadoes? Let's call this date the "day of the Super Outbreak." **Hint:** Since there is no data column for "day of year", to answer this question you could create a new column (say, called "dayofyear") from other columns using the `paste` function.
 
 ```{r}
 # Add your code here.
